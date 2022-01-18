@@ -13,9 +13,13 @@ public class Day18 {
         while ((line = reader.readLine()) != null) {
             numbers.add(new SnailfishNumber(line));
         }
-//        int mag = numbers.stream().reduce(SnailfishNumber.zero(), SnailfishNumber::sum).magnitude();
-//        System.out.println(mag);
-        int largestSum = findLargestSumMagnitude(numbers);
+        ArrayList<SnailfishNumber> copy = new ArrayList<>(numbers.size());
+        for (var number : numbers) {
+            copy.add(new SnailfishNumber(number.toString()));
+        }
+        int mag = numbers.stream().reduce(SnailfishNumber.zero(), SnailfishNumber::sum).magnitude();
+        System.out.println(mag);
+        int largestSum = findLargestSumMagnitude(copy);
         System.out.println(largestSum);
     }
 
